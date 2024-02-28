@@ -1,11 +1,21 @@
 //generate password script
 
 //[Edit this]
-const copyBtn   = document.querySelector("#copyBtn");
-const pasteBtn  = document.querySelector("#pasteBtn");
-const genBtn    = document.querySelector("#genPsw");
-const pswField  = document.querySelector("#password");
-const cPswField = document.querySelector("#cPassword");
+const copyBtn           = document.querySelector("#copyBtn");
+const pasteBtn          = document.querySelector("#pasteBtn");
+const genBtn            = document.querySelector("#genPsw");
+const pswField          = document.querySelector("#password");
+const pswLengthField    = document.querySelector("#passwordLength");
+const cPswField         = document.querySelector("#cPassword");
+
+const updatePswLength = () => {
+    const pswLengthDisplay = pswLengthField.nextElementSibling;
+    pswLengthDisplay.textContent = pswLengthField.value;
+};
+
+document.addEventListener("DOMContentLoaded", updatePswLength);
+
+pswLengthField.addEventListener("change", updatePswLength);
 
 genBtn.addEventListener("click", () =>  {
     const chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -53,3 +63,4 @@ pasteBtn.addEventListener("click", () => {
         err => console.log(err)
     );
 });
+
